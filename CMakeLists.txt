@@ -97,7 +97,7 @@ install(
 
 install (
   EXPORT ymtclpp-targets
-  DESTINATION lib/ymtclpp-${YMTOOLS_VERSION}
+  DESTINATION lib/ymtclpp-${YMTCLPP_VERSION}
   )
 
 install (FILES
