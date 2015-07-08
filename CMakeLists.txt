@@ -44,9 +44,10 @@ include_directories(
 
 
 # ===================================================================
-#  ターゲットの設定
+#  ソースファイルの設定
 # ===================================================================
-add_library(ym_tclpp
+
+set (SOURCES
   src/StrBuf.h
   src/TclBase.cc
   src/TclCmd.cc
@@ -58,7 +59,62 @@ add_library(ym_tclpp
   src/TclVarTrace.cc
   )
 
+
+# ===================================================================
+#  release ターゲットの設定
+# ===================================================================
+add_library (ym_tclpp
+  SHARED
+  ${SOURCES}
+  )
+
+target_compile_options (ym_tclpp
+  PRIVATE "-O3"
+  )
+
+target_compile_definitions (ym_tclpp
+  PRIVATE "-DNDEBUG"
+  )
+
 target_link_libraries(ym_tclpp
+  ${TCL_LIBRARY}
+  )
+
+
+# ===================================================================
+#  release with debug info ターゲットの設定
+# ===================================================================
+add_library (ym_tclpp_p
+  SHARED
+  ${SOURCES}
+  )
+
+target_compile_options (ym_tclpp_p
+  PRIVATE "-O2" "-g"
+  )
+
+target_compile_definitions (ym_tclpp_p
+  PRIVATE "-DNDEBUG"
+  )
+
+target_link_libraries(ym_tclpp_p
+  ${TCL_LIBRARY}
+  )
+
+
+# ===================================================================
+#  debug ターゲットの設定
+# ===================================================================
+add_library (ym_tclpp_d
+  SHARED
+  ${SOURCES}
+  )
+
+target_compile_options (ym_tclpp_d
+  PRIVATE "-g"
+  )
+
+target_link_libraries(ym_tclpp_d
   ${TCL_LIBRARY}
   )
 
@@ -85,7 +141,7 @@ configure_file(
 # ===================================================================
 
 install(
-  TARGETS ym_tclpp
+  TARGETS ym_tclpp ym_tclpp_p ym_tclpp_d
   DESTINATION lib
   EXPORT ymtclpp-targets
   )
