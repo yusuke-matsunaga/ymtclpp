@@ -22,6 +22,7 @@ include (CTest)
 # ===================================================================
 # パッケージの検査
 # ===================================================================
+list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include (FindDoxygen)
 
@@ -30,6 +31,8 @@ find_package(TCL REQUIRED)
 find_package (YmTools REQUIRED)
 
 find_package (GTest)
+
+include (ym_add_library)
 
 
 # ===================================================================
@@ -63,61 +66,16 @@ set (SOURCES
 # ===================================================================
 #  release ターゲットの設定
 # ===================================================================
-add_library (ym_tclpp
+ym_add_library (ym_tclpp
   SHARED
   ${SOURCES}
   )
 
-target_compile_options (ym_tclpp
-  PRIVATE "-O3"
-  )
-
-target_compile_definitions (ym_tclpp
-  PRIVATE "-DNDEBUG"
-  )
-
-target_link_libraries(ym_tclpp
-  ${TCL_LIBRARY}
-  )
-
-
-# ===================================================================
-#  release with debug info ターゲットの設定
-# ===================================================================
-add_library (ym_tclpp_p
-  SHARED
-  ${SOURCES}
-  )
-
-target_compile_options (ym_tclpp_p
-  PRIVATE "-O2" "-g"
-  )
-
-target_compile_definitions (ym_tclpp_p
-  PRIVATE "-DNDEBUG"
-  )
-
-target_link_libraries(ym_tclpp_p
-  ${TCL_LIBRARY}
-  )
-
-
-# ===================================================================
-#  debug ターゲットの設定
-# ===================================================================
-add_library (ym_tclpp_d
-  SHARED
-  ${SOURCES}
-  )
-
-target_compile_options (ym_tclpp_d
-  PRIVATE "-g"
-  )
-
-target_link_libraries(ym_tclpp_d
-  ${TCL_LIBRARY}
-  )
-
+foreach (_libname ym_tclpp ym_tclpp_p ym_tclpp_d)
+  target_link_libraries(${_libname}
+    ${TCL_LIBRARY}
+    )
+endforeach ()
 
 # ===================================================================
 # パッケージコンフィグレーションファイルの生成
