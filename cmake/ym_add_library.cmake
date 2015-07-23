@@ -53,7 +53,8 @@ function (ym_add_library)
   # debug モードのターゲット
   set (_target_name_d ${_target_name}_d)
   add_library (${_target_name_d}
-    ${_option}
+    # 常に static にする．
+    STATIC
     ${_sources}
     )
 
