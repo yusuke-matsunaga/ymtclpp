@@ -18,6 +18,8 @@ set (YMTCLPP_VERSION "${YMTCLPP_VERSION_MAJOR}.${YMTCLPP_VERSION_MINOR}")
 # ===================================================================
 include (CTest)
 
+enable_testing()
+
 
 # ===================================================================
 # パッケージの検査
@@ -26,10 +28,9 @@ list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include (FindDoxygen)
 
-find_package(TCL REQUIRED)
-
+find_package (TCL REQUIRED)
 find_package (YmTools REQUIRED)
-
+find_package (GPerftools)
 find_package (GTest)
 
 include (ym_add_library)
