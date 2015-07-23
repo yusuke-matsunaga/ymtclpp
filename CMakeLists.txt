@@ -30,7 +30,7 @@ include (FindDoxygen)
 
 find_package (TCL REQUIRED)
 find_package (YmTools REQUIRED)
-find_package (GPerftools)
+find_package (Gperftools)
 find_package (GTest)
 
 include (ym_add_library)
