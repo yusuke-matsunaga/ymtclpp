@@ -14,14 +14,6 @@ set (YMTCLPP_VERSION "${YMTCLPP_VERSION_MAJOR}.${YMTCLPP_VERSION_MINOR}")
 
 
 # ===================================================================
-# CTest モジュールの読み込み
-# ===================================================================
-include (CTest)
-
-enable_testing()
-
-
-# ===================================================================
 # パッケージの検査
 # ===================================================================
 list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -31,9 +23,26 @@ include (FindDoxygen)
 find_package (TCL REQUIRED)
 find_package (YmTools REQUIRED)
 find_package (Gperftools)
-find_package (GTest)
 
 include (ym_add_library)
+
+
+# ===================================================================
+# google-test は内蔵のものを使う．
+# ===================================================================
+add_subdirectory (gtest-1.7.0)
+set (GTEST_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/gtest-1.7.0/include")
+set (GTEST_BOTH_LIBRARIES
+  "${PROJECT_BINARY_DIR}/gtest-1.7.0/libgtest.a"
+  "${PROJECT_BINARY_DIR}/gtest-1.7.0/libgtest_main.a")
+
+
+# ===================================================================
+# CTest モジュールの読み込み
+# ===================================================================
+include (CTest)
+
+enable_testing()
 
 
 # ===================================================================
@@ -77,6 +86,7 @@ foreach (_libname ym_tclpp ym_tclpp_p ym_tclpp_d)
     ${TCL_LIBRARY}
     )
 endforeach ()
+
 
 # ===================================================================
 # パッケージコンフィグレーションファイルの生成
