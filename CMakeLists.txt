@@ -16,7 +16,9 @@ set (YMTCLPP_VERSION "${YMTCLPP_VERSION_MAJOR}.${YMTCLPP_VERSION_MINOR}")
 # ===================================================================
 # パッケージの検査
 # ===================================================================
-list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+list ( APPEND CMAKE_MODULE_PATH
+  "${CMAKE_CURRENT_SOURCE_DIR}/ym-common/cmake"
+  )
 
 include (FindDoxygen)
 
