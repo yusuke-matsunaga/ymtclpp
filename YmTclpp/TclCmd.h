@@ -174,12 +174,12 @@ protected:
   /// @note ここで生成したオブジェクトは TclCmd が削除されるときに
   /// 同時に削除される．
   TclPoptGroup*
-  new_popt_group(TclPopt* popt1 = NULL,
-		 TclPopt* popt2 = NULL,
-		 TclPopt* popt3 = NULL,
-		 TclPopt* popt4 = NULL,
-		 TclPopt* popt5 = NULL,
-		 TclPopt* popt6 = NULL);
+  new_popt_group(TclPopt* popt1 = nullptr,
+		 TclPopt* popt2 = nullptr,
+		 TclPopt* popt3 = nullptr,
+		 TclPopt* popt4 = nullptr,
+		 TclPopt* popt5 = nullptr,
+		 TclPopt* popt6 = nullptr);
 
   /// @brief Popt グループに要素を追加する．
   /// @param[in] group new_popt_group() で作成した TclPoptGroup
@@ -697,7 +697,7 @@ TclCmdBinder<Cmd>::reg(Tcl_Interp* interp,
 		       const string& cmd_name)
 {
   Cmd* cmd = new Cmd();
-  if ( cmd == NULL ) {
+  if ( cmd == nullptr ) {
     return TCL_ERROR;
   }
   else {
@@ -723,7 +723,7 @@ TclCmdBinder1<Cmd, T1>::reg(Tcl_Interp* interp,
 			    const string& cmd_name)
 {
   Cmd* cmd = new Cmd(arg1);
-  if ( cmd == NULL ) {
+  if ( cmd == nullptr ) {
     return TCL_ERROR;
   }
   else {
@@ -752,7 +752,7 @@ TclCmdBinder2<Cmd, T1, T2>::reg(Tcl_Interp* interp,
 				const string& cmd_name)
 {
   Cmd* cmd = new Cmd(arg1, arg2);
-  if ( cmd == NULL ) {
+  if ( cmd == nullptr ) {
     return TCL_ERROR;
   }
   else {
@@ -784,7 +784,7 @@ TclCmdBinder3<Cmd, T1, T2, T3>::reg(Tcl_Interp* interp,
 				    const string& cmd_name)
 {
   Cmd* cmd = new Cmd(arg1, arg2, arg3);
-  if ( cmd == NULL ) {
+  if ( cmd == nullptr ) {
     return TCL_ERROR;
   }
   else {
@@ -819,7 +819,7 @@ TclCmdBinder4<Cmd, T1, T2, T3, T4>::reg(Tcl_Interp* interp,
 					const string& cmd_name)
 {
   Cmd* cmd = new Cmd(arg1, arg2, arg3, arg4);
-  if ( cmd == NULL ) {
+  if ( cmd == nullptr ) {
     return TCL_ERROR;
   }
   else {
@@ -857,7 +857,7 @@ TclCmdBinder5<Cmd, T1, T2, T3, T4, T5>::reg(Tcl_Interp* interp,
 					    const string& cmd_name)
 {
   Cmd* cmd = new Cmd(arg1, arg2, arg3, arg4, arg5);
-  if ( cmd == NULL ) {
+  if ( cmd == nullptr ) {
     return TCL_ERROR;
   }
   else {
@@ -898,7 +898,7 @@ TclCmdBinder6<Cmd, T1, T2, T3, T4, T5, T6>::reg(Tcl_Interp* interp,
 						const string& cmd_name)
 {
   Cmd* cmd = new Cmd(arg1, arg2, arg3, arg4, arg5, arg6);
-  if ( cmd == NULL ) {
+  if ( cmd == nullptr ) {
     return TCL_ERROR;
   }
   else {

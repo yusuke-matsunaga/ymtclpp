@@ -40,7 +40,7 @@ public:
 
   /// @brief インタープリタの取得
   /// @return インタープリタを返す．
-  /// NULL の場合もあり得る．
+  /// nullptr の場合もあり得る．
   Tcl_Interp*
   interp() const;
 
@@ -382,7 +382,7 @@ public:
   /// @param[in] value 設定する値
   /// @param[in] flags 種々のフラグ
   /// @return 変数に代入された値を返す．
-  /// エラーの場合には NULL を持つオブジェクトを返す．
+  /// エラーの場合には nullptr を持つオブジェクトを返す．
   ///
   /// name を変数名とする変数に値として value を代入する
   /// 変数が存在しなければ新たに作られる．
@@ -399,7 +399,7 @@ public:
   /// @param[in] value 設定する値
   /// @param[in] flags 種々のフラグ
   /// @return 変数に代入された値を返す．
-  /// エラーの場合には NULL を持つオブジェクトを返す．
+  /// エラーの場合には nullptr を持つオブジェクトを返す．
   ///
   /// base(idx) を変数名とする変数に値として value を代入する．
   /// 変数が存在しなければ新たに作られる．
@@ -414,7 +414,7 @@ public:
   /// @param[in] name 対象の変数名
   /// @param[in] flags 種々のフラグ
   /// @return name の値を返す．
-  /// エラーの場合には NULL を持つオブジェクトを返す．
+  /// エラーの場合には nullptr を持つオブジェクトを返す．
   ///
   /// name を変数名とする変数の値を返す．
   /// @note flags については Tcl の本を参照
@@ -427,7 +427,7 @@ public:
   /// @param[in] idx 対象のインデックス
   /// @param[in] flags 種々のフラグ
   /// @return base(idx) の値を返す．
-  /// エラーの場合には NULL を持つオブジェクトを返す．
+  /// エラーの場合には nullptr を持つオブジェクトを返す．
   ///
   /// base(idx) を変数名とする変数の値を返す．
   /// @note flags については Tcl の本を参照
@@ -754,12 +754,12 @@ public:
   /// @param[in] prev_obj 探索を開始するポインタ
   /// @return 見つかった変数トレース
   ///
-  /// prev_obj が NULL ならば変数 name に設定してあるトレースのうち，
+  /// prev_obj が nullptr ならば変数 name に設定してあるトレースのうち，
   /// flags が一致する(ただし，flags には TCL_GLOBAL_ONLY だけが
-  /// 使われる)最初のトレースの TclVarTrace を返す．NULL でなければ，
+  /// 使われる)最初のトレースの TclVarTrace を返す．nullptr でなければ，
   /// flags が一致するトレースのうち，TclVarTrace が prev_obj
   /// であるものから探索を開始し，次に一致したトレースの TclVarTrace
-  /// を返す．もし一致するトレースがそれ以上ない場合には NULL を返す．
+  /// を返す．もし一致するトレースがそれ以上ない場合には nullptr を返す．
   TclVarTrace*
   vartrace_info(const string& name,
 		int flags,
@@ -772,12 +772,12 @@ public:
   /// @param[in] prev_obj 探索を開始するポインタ
   /// @return 見つかった変数トレース
   ///
-  /// prev_obj が NULL ならば変数 base(idx) に設定してあるトレースの
+  /// prev_obj が nullptr ならば変数 base(idx) に設定してあるトレースの
   /// うち，flags が一致する(ただし，flags には TCL_GLOBAL_ONLY だ
-  /// けが使われる)最初のトレースの TclVarTrace を返す．NULL でなければ，
+  /// けが使われる)最初のトレースの TclVarTrace を返す．nullptr でなければ，
   /// flags が一致するトレースのうち，TclVarTrace が prev_obj
   /// であるものから探索を開始し，次に一致したトレースの TclVarTrace
-  /// を返す．もし一致するトレースがそれ以上ない場合には NULL を返す．
+  /// を返す．もし一致するトレースがそれ以上ない場合には nullptr を返す．
   TclVarTrace*
   vartrace_info(const string& base,
 		const string& idx,

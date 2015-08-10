@@ -88,9 +88,9 @@ public:
 
   /// @brief 変数が参照された時のトレースコールバック
   /// @param[in] name1 変数名
-  /// @param[in] name2 インデックス(または NULL)
+  /// @param[in] name2 インデックス(または nullptr)
   /// @param[in] flags トレースが設定されたときのflag
-  /// @return 通常は NULL を返す．エラーが起きたときは
+  /// @return 通常は nullptr を返す．エラーが起きたときは
   /// エラーメッセージを返す．
   /// @note これは純粋仮想関数なので多重定義しなければならない．
   /// 呼び出された時のname1,name2,flagsの内容を引数にとる．
@@ -168,7 +168,7 @@ inline
 bool
 TclVarTrace::is_bound() const
 {
-  return interp() != NULL;
+  return interp() != nullptr;
 }
 
 END_NAMESPACE_YM_TCLPP

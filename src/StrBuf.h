@@ -31,7 +31,7 @@ public:
 
   /// @brief 空のコンストラクタ
   ///
-  /// 中身は NULL となる．
+  /// 中身は nullptr となる．
   StrBuf();
 
   /// @brief const char* を引数としたコンストラクタ
@@ -86,7 +86,7 @@ private:
 // const char* を引数としたコンストラクタ
 inline
 StrBuf::StrBuf(const char* src) :
-  mBuf(NULL),
+  mBuf(nullptr),
   mSize(0)
 {
   set(src);
@@ -95,7 +95,7 @@ StrBuf::StrBuf(const char* src) :
 // const string& を引数としたコンストラクタ
 inline
 StrBuf::StrBuf(const string& src) :
-  mBuf(NULL),
+  mBuf(nullptr),
   mSize(0)
 {
   set(src.c_str());
@@ -162,7 +162,7 @@ StrBuf::set(const char* src)
     if ( mBuf ) {
       delete [] mBuf;
     }
-    mBuf = NULL;
+    mBuf = nullptr;
     mSize = 0;
   }
 }

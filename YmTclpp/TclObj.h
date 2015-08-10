@@ -35,7 +35,7 @@ public:
   /// @brief 内容を指定したコンストラクタ
   /// @param[in] obj Tcl_Obj の実体へのポインタ
   /// この時点で obj の参照回数は一つ増やされる．
-  TclObj(Tcl_Obj* obj = NULL);
+  TclObj(Tcl_Obj* obj = nullptr);
 
   /// @brief int 型の値をセットするコンストラクタ
   /// @param[in] value 値
@@ -110,7 +110,7 @@ public:
   void
   clear();
 
-  /// @brief 現在のオブジェクトを捨ててポインタをNULLにする．
+  /// @brief 現在のオブジェクトを捨ててポインタをnullptrにする．
   ///
   /// といっても本当のTcl_Objの参照回数が1より大きければ
   /// 他のポインタが参照しているのでオブジェクトは破棄されない．
@@ -134,13 +134,13 @@ public:
 
   /// @brief 妥当なポインタのチェック
   ///
-  /// @return ポインタが NULL 以外の内容を持っているときに true を返す．
+  /// @return ポインタが nullptr 以外の内容を持っているときに true を返す．
   bool
   is_validptr() const;
 
   /// @brief 共有オブジェクトのチェック
   /// @return 他のポインタからも指されていて共有されていたら true を返す．
-  /// もちろん，mPtr が NULL なら false
+  /// もちろん，mPtr が nullptr なら false
   bool
   is_shared() const;
 
@@ -154,49 +154,49 @@ public:
 
   /// @brief int 型の値をセットする．
   /// @param[in] value 値
-  /// もしもポインタがNULLなら新しいオブジェクトを生成する．
+  /// もしもポインタがnullptrなら新しいオブジェクトを生成する．
   void
   set_int(int value);
 
   /// @brief unsigned int 型の値をセットする．
   /// @param[in] value 値
-  /// もしもポインタがNULLなら新しいオブジェクトを生成する．
+  /// もしもポインタがnullptrなら新しいオブジェクトを生成する．
   void
   set_uint(unsigned int value);
 
   /// @brief long 型の値をセットする．
   /// @param[in] value 値
-  /// もしもポインタがNULLなら新しいオブジェクトを生成する．
+  /// もしもポインタがnullptrなら新しいオブジェクトを生成する．
   void
   set_long(long value);
 
   /// @brief unsigned long 型の値をセットする．
   /// @param[in] value 値
-  /// もしもポインタがNULLなら新しいオブジェクトを生成する．
+  /// もしもポインタがnullptrなら新しいオブジェクトを生成する．
   void
   set_ulong(unsigned long value);
 
   /// @brief bool 型の値をセットする．
   /// @param[in] value 値
-  /// もしもポインタがNULLなら新しいオブジェクトを生成する．
+  /// もしもポインタがnullptrなら新しいオブジェクトを生成する．
   void
   set_bool(bool value);
 
   /// @brief double 型の値をセットする．
   /// @param[in] value 値
-  /// もしもポインタがNULLなら新しいオブジェクトを生成する．
+  /// もしもポインタがnullptrなら新しいオブジェクトを生成する．
   void
   set_double(double value);
 
   /// @brief 文字列型の値をセットする．
   /// @param[in] value 値
-  /// もしもポインタがNULLなら新しいオブジェクトを生成する．
+  /// もしもポインタがnullptrなら新しいオブジェクトを生成する．
   void
   set_string(const string& value);
 
   /// @brief 文字列型の値をセットする．
   /// @param[in] value 値
-  /// もしもポインタがNULLなら新しいオブジェクトを生成する．
+  /// もしもポインタがnullptrなら新しいオブジェクトを生成する．
   void
   set_string(const char* value);
 
@@ -266,63 +266,63 @@ public:
 
   /// @brief int 型への変換
   /// @param[in] value 変換した値を格納する変数
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
   int
   get_int(int& value,
-	  Tcl_Interp* interp = NULL) const;
+	  Tcl_Interp* interp = nullptr) const;
 
   /// @brief unsigned int 型への変換
   /// @param[in] value 変換した値を格納する変数
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
   int
   get_uint(unsigned int& value,
-	   Tcl_Interp* interp = NULL) const;
+	   Tcl_Interp* interp = nullptr) const;
 
   /// @brief long 型への変換
   /// @param[in] value 変換した値を格納する変数
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
   int
   get_long(long& value,
-	   Tcl_Interp* interp = NULL) const;
+	   Tcl_Interp* interp = nullptr) const;
 
   /// @brief unsigned long 型への変換
   /// @param[in] value 変換した値を格納する変数
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
   int
   get_ulong(unsigned long& value,
-	    Tcl_Interp* interp = NULL) const;
+	    Tcl_Interp* interp = nullptr) const;
 
   /// @brief bool 型への変換
   /// @param[in] value 変換した値を格納する変数
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
   int
   get_bool(bool& value,
-	   Tcl_Interp* interp = NULL) const;
+	   Tcl_Interp* interp = nullptr) const;
 
   /// @brief double 型への変換
   /// @param[in] value 変換した値を格納する変数
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
   int
   get_double(double& value,
-	     Tcl_Interp* interp = NULL) const;
+	     Tcl_Interp* interp = nullptr) const;
 
   /// @}
   //////////////////////////////////////////////////////////////////////
@@ -333,11 +333,11 @@ public:
   /// @{
 
   /// @brief 文字列型への変換
-  /// @param[out] lengthPtr NULL でなければ文字列の長さを格納する．
+  /// @param[out] lengthPtr nullptr でなければ文字列の長さを格納する．
   /// @return 変換された文字列を返す．
   /// @note 他の型と異なりエラーとはならない．
   string
-  get_string(int* lengthPtr = NULL) const;
+  get_string(int* lengthPtr = nullptr) const;
 
   /// @brief string へのキャスト演算子
   /// @return 変換された文字列を返す．
@@ -395,23 +395,23 @@ public:
 
   /// @brief リストオブジェクトにリストを追加する．
   /// @param[in] elemList 追加するリストオブジェクト
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
   int
   append_list(const TclObj& elemList,
-	      Tcl_Interp* interp = NULL);
+	      Tcl_Interp* interp = nullptr);
 
   /// @brief リストオブジェクトに一つの要素を追加する．
   /// @param[in] obj 追加するオブジェクト
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
   int
   append_element(const TclObj& obj,
-		 Tcl_Interp* interp = NULL);
+		 Tcl_Interp* interp = nullptr);
 
   /// @brief リストオブジェクトの生成
   ///
@@ -442,56 +442,56 @@ public:
   /// リストオブジェクトの要素を objv に格納する．
   /// 上の set_list() の逆関数
   /// @param[out] objv 取り出された要素を格納するベクタ
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた (たぶんリスト型ではなかった)
   int
   list_elements(TclObjVector& objv,
-		Tcl_Interp* interp = NULL) const;
+		Tcl_Interp* interp = nullptr) const;
 
   /// @brief リストオブジェクトの要素の取得
   ///
   /// リストオブジェクトの要素を objv に格納する．
   /// 上の SetList() の逆関数
   /// @param[out] objv 取り出された要素を格納するリスト
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた (たぶんリスト型ではなかった)
   int
   list_elements(TclObjList& objv,
-		Tcl_Interp* interp = NULL) const;
+		Tcl_Interp* interp = nullptr) const;
 
   /// @brief リストオブジェクトの要素数の取得
   /// @param[out] length 要素数を格納する変数
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた (たぶんリスト型ではなかった)
   int
   list_length(size_t& length,
-	      Tcl_Interp* interp = NULL) const;
+	      Tcl_Interp* interp = nullptr) const;
 
   /// @brief リストオブジェクトの要素の取得
   /// @param[in] index 取り出す要素の位置 (最初の位置は 0)
   /// @param[out] obj index で指された位置の要素を格納する変数
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
-  /// もしも範囲外の場合には NULL ポインタがセットされる．
+  /// もしも範囲外の場合には nullptr ポインタがセットされる．
   int
   list_index(size_t index,
 	     TclObj& obj,
-	     Tcl_Interp* interp = NULL) const;
+	     Tcl_Interp* interp = nullptr) const;
 
   /// @brief リストの部分置換
   /// @param[in] first 置き換え対象の最初の位置
   /// @param[in] count 置き換え対象の要素数
   /// @param[in] objc 置き換える新しいリストの要素数
   /// @param[in] objv 置き換える新しいリストを表すC型配列
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
@@ -500,13 +500,13 @@ public:
 	       size_t count,
 	       size_t objc,
 	       const TclObj objv[],
-	       Tcl_Interp* interp = NULL);
+	       Tcl_Interp* interp = nullptr);
 
   /// @brief リストの部分置換
   /// @param[in] first 置き換え対象の最初の位置
   /// @param[in] count 置き換え対象の要素数
   /// @param[in] objv 置き換える新しいリストを表すベクタ
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
@@ -514,13 +514,13 @@ public:
   replace_list(size_t first,
 	       size_t count,
 	       const TclObjVector& objv,
-	       Tcl_Interp* interp = NULL);
+	       Tcl_Interp* interp = nullptr);
 
   /// @brief リストの部分置換
   /// @param[in] first 置き換え対象の最初の位置
   /// @param[in] count 置き換え対象の要素数
   /// @param[in] objv 置き換える新しいリストを表すリスト
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
@@ -528,7 +528,7 @@ public:
   replace_list(size_t first,
 	       size_t count,
 	       const TclObjList& objv,
-	       Tcl_Interp* interp = NULL);
+	       Tcl_Interp* interp = nullptr);
 
   /// @}
   //////////////////////////////////////////////////////////////////////
@@ -540,7 +540,7 @@ public:
 
   /// @brief type で示された型に変換する．
   /// @param[in] type 変換先の型
-  /// @param[in] interp NULL でなければエラーメッセージ
+  /// @param[in] interp nullptr でなければエラーメッセージ
   /// をセットするのに用いる．
   /// @retval TCL_OK 変換が成功した
   /// @retval TCL_ERROR エラーが起きた
@@ -549,7 +549,7 @@ public:
   /// const としている
   int
   convert_to_type(Tcl_ObjType* type,
-		  Tcl_Interp* interp = NULL) const;
+		  Tcl_Interp* interp = nullptr) const;
 
   /// @brief ポインタの中身を取り出す．
   /// @warning 通常は高位レベルメンバ関数を呼ぶようにして生の
@@ -584,14 +584,14 @@ protected:
   /// @brief mPtr に新しいポインタをセットする．
   /// @param[in] obj セットする新しいオブジェクトへのポインタ
   /// obj の参照回数が増やされる．
-  /// @warning obj が NULL でないことが分かっているときだけ
+  /// @warning obj が nullptr でないことが分かっているときだけ
   /// この関数を使うこと．
   void
   set_ptr(Tcl_Obj* obj);
 
   /// @brief mPtr に対して修正を行なう時の前処理
   ///
-  /// mPtr が NULL ポインタなら新規にオブジェクトを生成し，
+  /// mPtr が nullptr ポインタなら新規にオブジェクトを生成し，
   /// 共有されていたら複製を作る．
   void
   instanciate();

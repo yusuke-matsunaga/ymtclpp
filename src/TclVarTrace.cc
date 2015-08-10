@@ -101,7 +101,7 @@ TclVarTrace::unbind()
       Tcl_UntraceVar(interp(), sptr1, flags,
 		     vartrace_callback, (ClientData) this);
     }
-    set_interp(NULL);
+    set_interp(nullptr);
   }
 }
 
@@ -120,7 +120,7 @@ TclVarTrace::vartrace_callback(ClientData clientData,
   // する事を確かめておく．
   ASSERT_COND( interp == trace_obj->interp() );
 
-  char* result = NULL;
+  char* result = nullptr;
 
   if ((flags & TCL_TRACE_UNSETS) == 0 ||
       (trace_obj->flags() & TCL_TRACE_UNSETS) == TCL_TRACE_UNSETS) {
@@ -131,7 +131,7 @@ TclVarTrace::vartrace_callback(ClientData clientData,
 
   if ( flags & TCL_TRACE_DESTROYED ) {
     // バインドを外す．
-    trace_obj->set_interp(NULL);
+    trace_obj->set_interp(nullptr);
   }
 
   return result;

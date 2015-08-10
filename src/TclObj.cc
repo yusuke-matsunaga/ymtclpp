@@ -150,7 +150,7 @@ TclObj::clear()
   }
 }
 
-// 現在のオブジェクトを捨ててポインタをNULLにする．
+// 現在のオブジェクトを捨ててポインタをnullptrにする．
 // といっても本当のTcl_Objの参照回数が1より大きければ
 // 他のポインタが参照しているのでオブジェクトは破棄されない．
 void
@@ -158,7 +158,7 @@ TclObj::set_null()
 {
   if ( mPtr ) {
     Tcl_DecrRefCount(mPtr);
-    mPtr = NULL;
+    mPtr = nullptr;
   }
 }
 
@@ -173,7 +173,7 @@ TclObj::duplicate() const
 }
 
 // int 型の値をセットする．
-// もしもポインタがNULLなら新しいオブジェクトを生成する．
+// もしもポインタがnullptrなら新しいオブジェクトを生成する．
 void
 TclObj::set_int(int value)
 {
@@ -191,7 +191,7 @@ TclObj::set_int(int value)
 }
 
 // unsigned int 型の値をセットする．
-// もしもポインタがNULLなら新しいオブジェクトを生成する．
+// もしもポインタがnullptrなら新しいオブジェクトを生成する．
 void
 TclObj::set_uint(unsigned int value)
 {
@@ -199,7 +199,7 @@ TclObj::set_uint(unsigned int value)
 }
 
 // long 型の値をセットする．
-// もしもポインタがNULLなら新しいオブジェクトを生成する．
+// もしもポインタがnullptrなら新しいオブジェクトを生成する．
 void
 TclObj::set_long(long value)
 {
@@ -216,7 +216,7 @@ TclObj::set_long(long value)
 }
 
 // unsigned long 型の値をセットする．
-// もしもポインタがNULLなら新しいオブジェクトを生成する．
+// もしもポインタがnullptrなら新しいオブジェクトを生成する．
 void
 TclObj::set_ulong(unsigned long value)
 {
@@ -224,7 +224,7 @@ TclObj::set_ulong(unsigned long value)
 }
 
 // bool 型の値をセットする．
-// もしもポインタがNULLなら新しいオブジェクトを生成する．
+// もしもポインタがnullptrなら新しいオブジェクトを生成する．
 void
 TclObj::set_bool(bool value)
 {
@@ -241,7 +241,7 @@ TclObj::set_bool(bool value)
 }
 
 // double 型の値をセットする．
-// もしもポインタがNULLなら新しいオブジェクトを生成する．
+// もしもポインタがnullptrなら新しいオブジェクトを生成する．
 void
 TclObj::set_double(double value)
 {
@@ -258,7 +258,7 @@ TclObj::set_double(double value)
 }
 
 // 文字列型の値をセットする．
-// もしもポインタがNULLなら新しいオブジェクトを生成する．
+// もしもポインタがnullptrなら新しいオブジェクトを生成する．
 void
 TclObj::set_string(const string& value)
 {
@@ -407,7 +407,7 @@ TclObj::concat(const TclObjList& objv)
 }
 
 // リストオブジェクトにリストを追加する．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::append_list(const TclObj& elemList,
@@ -419,7 +419,7 @@ TclObj::append_list(const TclObj& elemList,
 }
 
 // リストオブジェクトに一つの要素を追加する．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::append_element(const TclObj& obj,
@@ -431,7 +431,7 @@ TclObj::append_element(const TclObj& obj,
 }
 
 // 複数のオブジェクトを要素とするリストオブジェクトを作りセットする．
-// もしもポインタがNULLなら新しいオブジェクトを生成する．
+// もしもポインタがnullptrなら新しいオブジェクトを生成する．
 void
 TclObj::set_list(size_t objc,
 		 const TclObj objv[])
@@ -458,7 +458,7 @@ TclObj::set_list(const TclObjList& objv)
 }
 
 // リストオブジェクトの要素を objv に格納する．上の set_list() の逆関数
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::list_elements(TclObjVector& objv,
@@ -496,8 +496,8 @@ TclObj::list_elements(TclObjList& objv,
 }
 
 // index で指された位置の要素を取り出す．
-// もしも範囲外の場合には NULL ポインタがセットされる．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも範囲外の場合には nullptr ポインタがセットされる．
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::list_index(size_t index,
@@ -569,7 +569,7 @@ TclObj::convert_to_type(Tcl_ObjType* type,
 }
 
 // mPtr に対して修正を行なう時の前処理
-// NULL ポインタなら新規に生成し，
+// nullptr ポインタなら新規に生成し，
 // 共有されていたら複製を作る．
 void
 TclObj::instanciate()
@@ -663,7 +663,7 @@ TclObj::replace_list_sub(size_t first,
   return code;
 }
 
-// ポインタが NULL 以外の内容を持っているときに true を返す．
+// ポインタが nullptr 以外の内容を持っているときに true を返す．
 bool
 TclObj::is_validptr() const
 {
@@ -676,7 +676,7 @@ TclObj::is_validptr() const
 }
 
 // 他のポインタからも指されていて共有されていたら true を返す．
-// もちろん，mPtr が NULL なら false
+// もちろん，mPtr が nullptr なら false
 bool
 TclObj::is_shared() const
 {
@@ -689,7 +689,7 @@ TclObj::is_shared() const
 }
 
 // int 型の値を得る．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::get_int(int& value,
@@ -699,7 +699,7 @@ TclObj::get_int(int& value,
 }
 
 // unsigned int 型の値を得る．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::get_uint(unsigned int& value,
@@ -709,7 +709,7 @@ TclObj::get_uint(unsigned int& value,
 }
 
 // long 型の値を得る．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::get_long(long& value,
@@ -719,7 +719,7 @@ TclObj::get_long(long& value,
 }
 
 // unsigned long 型の値を得る．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::get_ulong(unsigned long& value,
@@ -729,7 +729,7 @@ TclObj::get_ulong(unsigned long& value,
 }
 
 // bool 型の値を得る．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::get_bool(bool& value,
@@ -747,7 +747,7 @@ TclObj::get_bool(bool& value,
 }
 
 // double 型の値を得る．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::get_double(double& value,
@@ -779,7 +779,7 @@ TclObj::operator<<(const string& value)
 }
 
 // リストの要素数を得る．
-// もしも interp が NULL でなければエラーメッセージをセットするのに
+// もしも interp が nullptr でなければエラーメッセージをセットするのに
 // 用いる．
 int
 TclObj::list_length(size_t& length,
@@ -815,7 +815,7 @@ TclObj::invalidate_stringrep()
 
 // mPtr に新しいポインタをセットする．
 // 参照回数が増やされる．
-// mPtr は NULL でないことが分かっているときだけこの
+// mPtr は nullptr でないことが分かっているときだけこの
 // 関数を使うこと．
 void
 TclObj::set_ptr(Tcl_Obj* obj)

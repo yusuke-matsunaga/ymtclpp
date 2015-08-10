@@ -19,7 +19,7 @@ BEGIN_NAMESPACE_YM_TCLPP
 // コンストラクタ
 // 最初は特定のインタープリタには結び付いていない．
 TclBase::TclBase() :
-  mInterp(NULL)
+  mInterp(nullptr)
 {
 }
 
@@ -29,7 +29,7 @@ TclBase::~TclBase()
 }
 
 // インタープリタを得る．
-// NULL の場合もあり得る．
+// nullptr の場合もあり得る．
 Tcl_Interp*
 TclBase::interp() const
 {
@@ -362,7 +362,7 @@ TclBase::background_error() const
 // name を変数名とする変数に値として
 // value を代入する．
 // 変数が存在しなければ新たに作られる．変数に新たに代入された
-// 値を返す．エラーの場合には NULL を持つオブジェクトを返す．
+// 値を返す．エラーの場合には nullptr を持つオブジェクトを返す．
 // flags については Tcl の本を参照
 TclObj
 TclBase::set_var(const TclObj& name,
@@ -370,14 +370,14 @@ TclBase::set_var(const TclObj& name,
 		 int flags) const
 {
   Tcl_Obj* result =
-    Tcl_ObjSetVar2(interp(), name.mPtr, NULL, value.mPtr, flags);
+    Tcl_ObjSetVar2(interp(), name.mPtr, nullptr, value.mPtr, flags);
   return TclObj(result);
 }
 
 // base(idx) を変数名とする変数に値として
 // value を代入する．
 // 変数が存在しなければ新たに作られる．変数に新たに代入された
-// 値を返す．エラーの場合には NULL を持つオブジェクトを返す．
+// 値を返す．エラーの場合には nullptr を持つオブジェクトを返す．
 // flags については Tcl の本を参照
 TclObj
 TclBase::set_var(const TclObj& base,
@@ -391,18 +391,18 @@ TclBase::set_var(const TclObj& base,
 }
 
 // name を変数名とする変数の値を返す．
-// エラーの場合には NULL を持つオブジェクトを返す．
+// エラーの場合には nullptr を持つオブジェクトを返す．
 // flags については Tcl の本を参照
 TclObj
 TclBase::var(const TclObj& name,
 	     int flags) const
 {
-  Tcl_Obj* result = Tcl_ObjGetVar2(interp(), name.mPtr, NULL, flags);
+  Tcl_Obj* result = Tcl_ObjGetVar2(interp(), name.mPtr, nullptr, flags);
   return TclObj(result);
 }
 
 // base(idx) を変数名とする変数の値を返す．
-// エラーの場合には NULL を持つオブジェクト返す．
+// エラーの場合には nullptr を持つオブジェクト返す．
 // flags については Tcl の本を参照
 TclObj
 TclBase::var(const TclObj& base,
@@ -708,12 +708,12 @@ TclBase::list_from_var(const TclObj& base,
 // TclVarTrace を用いる．
 //////////////////////////////////////////////////////////////////////
 
-// prev_obj が NULL ならば変数 name に設定してあるトレースのうち，
+// prev_obj が nullptr ならば変数 name に設定してあるトレースのうち，
 // flags が一致する(ただし，flags には TCL_GLOBAL_ONLY だけが
-// 使われる)最初のトレースの TclVarTrace を返す．NULL でなければ，
+// 使われる)最初のトレースの TclVarTrace を返す．nullptr でなければ，
 // flags が一致するトレースのうち，TclVarTrace が prev_obj
 // であるものから探索を開始し，次に一致したトレースの TclVarTrace
-// を返す．もし一致するトレースがそれ以上ない場合には NULL を返す．
+// を返す．もし一致するトレースがそれ以上ない場合には nullptr を返す．
 TclVarTrace*
 TclBase::vartrace_info(const string& name,
 		       int flags,
@@ -726,12 +726,12 @@ TclBase::vartrace_info(const string& name,
   return (TclVarTrace*) result;
 }
 
-// prev_obj が NULL ならば変数 base(idx) に設定してあるトレースの
+// prev_obj が nullptr ならば変数 base(idx) に設定してあるトレースの
 // うち，flags が一致する(ただし，flags には TCL_GLOBAL_ONLY だ
-// けが使われる)最初のトレースの TclVarTrace を返す．NULL でなければ，
+// けが使われる)最初のトレースの TclVarTrace を返す．nullptr でなければ，
 // flags が一致するトレースのうち，TclVarTrace が prev_obj
 // であるものから探索を開始し，次に一致したトレースの TclVarTrace
-// を返す．もし一致するトレースがそれ以上ない場合には NULL を返す．
+// を返す．もし一致するトレースがそれ以上ない場合には nullptr を返す．
 TclVarTrace*
 TclBase::vartrace_info(const string& base,
 		       const string& idx,

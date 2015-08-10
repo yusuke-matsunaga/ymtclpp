@@ -64,7 +64,7 @@ cmd_delete_callback(ClientData clientData)
 
 // コンストラクタ
 TclCmd::TclCmd() :
-  mCmdToken(NULL),
+  mCmdToken(nullptr),
   mAutoHelp(true)
 {
 }
@@ -105,7 +105,7 @@ TclCmd::bind(Tcl_Interp* interp,
 				   cmd_command_callback,
 				   reinterpret_cast<ClientData>(this),
 				   cmd_delete_callback);
-  if ( mCmdToken == NULL ) {
+  if ( mCmdToken == nullptr ) {
     return TCL_ERROR;
   }
   return TCL_OK;
@@ -444,7 +444,7 @@ TclCmdCls::cmd_proc(TclObjVector& objv)
   string obj_name = objv[1];
 
   TclCmd* obj = create_obj();
-  if ( obj == NULL ) {
+  if ( obj == nullptr ) {
     // オブジェクトが生成できなかった．
     set_result("Can not create new object.");
     return TCL_ERROR;
